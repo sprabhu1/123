@@ -1,0 +1,144 @@
+C AREA OF A TRIANGLE - HERON'S FORMULA
+C INPUT - CARD READER UNIT 5, INTEGER INPUT, ONE BLANK CARD FOR END-OF-DATA
+C OUTPUT - LINE PRINTER UNIT 6, REAL OUTPUT
+C INPUT ERROR DISPAY ERROR MESSAGE ON OUTPUT
+  501 FORMAT(3I5)
+  601 FORMAT(4H A= ,I5,5H  B= ,I5,5H  C= ,I5,8H  AREA= ,F10.2,12HSQUARE UNITS)
+  602 FORMAT(10HNORMAL END)
+  603 FORMAT(23HINPUT ERROR, ZERO VALUE)
+      INTEGER A,B,C
+   10 READ(5,501) A,B,C
+      IF(A.EQ.0 .AND. B.EQ.0 .AND. C.EQ.0) GO TO 50
+      IF(A.EQ.0 .OR.  B.EQ.0 .OR.  C.EQ.0) GO TO 90
+      S = (A + B + C) / 2.0
+      AREA = SQRT( S * (S - A) * (S - B) * (S - C) )
+      WRITE(6,601) A,B,C,AREA
+      GO TO 10
+   50 WRITE(6,602)
+      STOP
+   90 WRITE(6,603)
+      STOP
+      END
+C AREA OF A TRIANGLE - HERON'S FORMULA
+C INPUT - CARD READER UNIT 5, INTEGER INPUT, NO BLANK CARD FOR END OF DATA
+C OUTPUT - LINE PRINTER UNIT 6, REAL OUTPUT
+C INPUT ERROR DISPAYS ERROR MESSAGE ON OUTPUT
+  501 FORMAT(3I5)
+  601 FORMAT(" A= ",I5,"  B= ",I5,"  C= ",I5,"  AREA= ",F10.2,"SQUARE UNITS")
+  602 FORMAT("NORMAL END")
+  603 FORMAT("INPUT ERROR OR ZERO VALUE ERROR")
+      INTEGER A,B,C
+   10 READ(5,501,END=50,ERR=90) A,B,C
+      IF(A=0 .OR. B=0 .OR. C=0) GO TO 90
+      S = (A + B + C) / 2.0
+      AREA = SQRT( S * (S - A) * (S - B) * (S - C) )  
+      WRITE(6,601) A,B,C,AREA
+      GO TO 10
+   50 WRITE(6,602)
+      STOP
+   90 WRITE(6,603)
+      STOP
+      END
+C AREA OF A TRIANGLE - HERON'S FORMULA
+C INPUT - CARD READER UNIT 5, INTEGER INPUT, NO BLANK CARD FOR END OF DATA
+C OUTPUT - LINE PRINTER UNIT 6, REAL OUTPUT
+C INPUT ERROR DISPAYS ERROR MESSAGE ON OUTPUT
+  501 FORMAT(3I5)
+  601 FORMAT(" A= ",I5,"  B= ",I5,"  C= ",I5,"  AREA= ",F10.2,"SQUARE UNITS")
+  602 FORMAT("NORMAL END")
+  603 FORMAT("INPUT ERROR OR ZERO VALUE ERROR")
+      INTEGER A,B,C
+   10 READ(5,501,END=50,ERR=90) A,B,C
+      IF(A=0 .OR. B=0 .OR. C=0) GO TO 90
+      S = (A + B + C) / 2.0
+      AREA = SQRT( S * (S - A) * (S - B) * (S - C) )  
+      WRITE(6,601) A,B,C,AREA
+      GO TO 10
+   50 WRITE(6,602)
+      STOP
+   90 WRITE(6,603)
+      STOP
+      END
+ C     FORTRAN IV WAS ONE OF THE FIRST PROGRAMMING
+ C     LANGUAGES TO SUPPORT SOURCE COMMENTS
+       WRITE (6,7)
+     7 FORMAT(13H HELLO, WORLD)
+       STOP
+       END
+ PROGRAM HELLO
+*     The PRINT statement is like WRITE,
+*     but prints to the standard output unit
+        PRINT '(A)', 'Hello, world'
+        STOP
+      END
+ program HelloWorld
+   write (*,*) 'Hello, world!'   ! This is an inline comment
+ end program HelloWorld
+ euclid.f (FORTRAN 77)
+*     Find greatest common divisor using the Euclidean algorithm
+
+      PROGRAM EUCLID
+        PRINT *, 'A?'
+        READ *, NA
+        IF (NA.LE.0) THEN
+          PRINT *, 'A must be a positive integer.'
+          STOP
+        END IF
+        PRINT *, 'B?'
+        READ *, NB
+        IF (NB.LE.0) THEN
+          PRINT *, 'B must be a positive integer.'
+          STOP
+        END IF
+        PRINT *, 'The GCD of', NA, ' and', NB, ' is', NGCD(NA, NB), '.'
+        STOP
+      END
+
+      FUNCTION NGCD(NA, NB)
+        IA = NA
+        IB = NB
+    1   IF (IB.NE.0) THEN
+          ITEMP = IA
+          IA = IB
+          IB = MOD(ITEMP, IB)
+          GOTO 1
+        END IF
+        NGCD = IA
+        RETURN
+      END
+      program add
+c
+c       John Mahaffy,  Penn State University, CmpSc 201 Example
+c       1/26/96
+c
+c
+c   This is a simple program to read 2 numbers and print the sum
+c
+      implicit none
+      real a,b,s
+c
+c   a - one of two numbers to be added
+c   b - the other number in the sum
+c   s - the sum of a and b
+c
+c  Get the numbers from the program user
+c  First ask for the numbers
+c
+      print *, ' This program adds 2 real numbers'
+      print *, ' Type them in now separated by a comma or space'
+c
+c   Now read the numbers that are typed by the user
+c   this Fortran read will wait unil the numbers are typed
+c
+      read *, a,b
+c
+c   Now calculate the sum
+c
+      s = a + b
+c
+c   Print out the results with a description
+c
+      print *,  'The sum of ', a,' and ' , b
+      print *, ' is ' , s
+      stop
+      end
